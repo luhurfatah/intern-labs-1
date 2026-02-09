@@ -1,4 +1,4 @@
-# Lab 01: Cloud Concepts, IAM & AWS CLI
+# Lab 01: IAM & AWS CLI Basics
 
 | Difficulty | Est. Time | Prerequisites |
 |------------|-----------|---------------|
