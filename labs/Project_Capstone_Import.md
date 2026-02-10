@@ -8,12 +8,13 @@ The project requires two distinct environments (Dev and Prod) within the same AW
 
 ```mermaid
 graph TD
-    %% Styling
-    classDef vpc fill:#f5f5f5,stroke:#232f3e,stroke-width:2px;
+    %% Styling (High Compatibility - Light/Dark Friendly)
+    classDef vpc fill:#f9f9f9,stroke:#777,stroke-width:2px;
     classDef pubSubnet fill:#e7f3ff,stroke:#0073bb,stroke-width:1px,stroke-dasharray: 5 5;
     classDef privSubnet fill:#f2f2f2,stroke:#545b64,stroke-width:1px,stroke-dasharray: 5 5;
-    classDef resource fill:#ffffff,stroke:#232f3e,stroke-width:1px;
+    classDef resource fill:#ffffff,stroke:#333,stroke-width:1px;
     classDef s3 fill:#fff7e6,stroke:#ff9900,stroke-width:2px;
+    classDef env fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
 
     subgraph "AWS Account"
         direction TB
@@ -32,6 +33,9 @@ graph TD
             D_S3[(S3: capstone-dev)]
         end
 
+        %% Force vertical stacking
+        DevEnv ~~~ ProdEnv
+
         subgraph ProdEnv ["PROD ENVIRONMENT"]
             direction TB
             subgraph ProdVPC ["VPC: 10.1.0.0/16"]
@@ -48,6 +52,7 @@ graph TD
     end
 
     %% Assign Classes
+    class DevEnv,ProdEnv env;
     class DevVPC,ProdVPC vpc;
     class DevPub,ProdPub pubSubnet;
     class DevPriv,ProdPriv privSubnet;
