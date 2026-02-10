@@ -8,24 +8,51 @@ The project requires two distinct environments (Dev and Prod) within the same AW
 
 ```mermaid
 graph TD
+    %% Styling
+    classDef vpc fill:#f5f5f5,stroke:#232f3e,stroke-width:2px;
+    classDef pubSubnet fill:#e7f3ff,stroke:#0073bb,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef privSubnet fill:#f2f2f2,stroke:#545b64,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef resource fill:#ffffff,stroke:#232f3e,stroke-width:1px;
+    classDef s3 fill:#fff7e6,stroke:#ff9900,stroke-width:2px;
+
     subgraph "AWS Account"
-        subgraph "Dev VPC (10.0.0.0/16)"
-            DNBS[Static IP: EIP] --> DNLB[NLB]
-            DNLB --> DALB[ALB]
-            DALB --> DEC2[EC2: web-dev]
-            DPub[Public Subnet]
-            DPriv[Private Subnet]
+        direction TB
+
+        subgraph DevEnv ["DEV ENVIRONMENT"]
+            direction TB
+            subgraph DevVPC ["VPC: 10.0.0.0/16"]
+                subgraph DevPub ["Public Subnet (10.0.1.0/24)"]
+                    D_EIP[Elastic IP] --> D_NLB(NLB)
+                    D_NLB --> D_ALB(ALB)
+                end
+                subgraph DevPriv ["Private Subnet (10.0.2.0/24)"]
+                    D_ALB --> D_EC2[EC2: web-dev]
+                end
+            end
+            D_S3[(S3: capstone-dev)]
         end
-        subgraph "Prod VPC (10.1.0.0/16)"
-            PNBS[Static IP: EIP] --> PNLB[NLB]
-            PNLB --> PALB[ALB]
-            PALB --> PEC2[EC2: web-prod]
-            PPub[Public Subnet]
-            PPriv[Private Subnet]
+
+        subgraph ProdEnv ["PROD ENVIRONMENT"]
+            direction TB
+            subgraph ProdVPC ["VPC: 10.1.0.0/16"]
+                subgraph ProdPub ["Public Subnet (10.1.1.0/24)"]
+                    P_EIP[Elastic IP] --> P_NLB(NLB)
+                    P_NLB --> P_ALB(ALB)
+                end
+                subgraph ProdPriv ["Private Subnet (10.1.2.0/24)"]
+                    P_ALB --> P_EC2[EC2: web-prod]
+                end
+            end
+            P_S3[(S3: capstone-prod)]
         end
-        S3Dev[(S3: capstone-dev-name)]
-        S3Prod[(S3: capstone-prod-name)]
     end
+
+    %% Assign Classes
+    class DevVPC,ProdVPC vpc;
+    class DevPub,ProdPub pubSubnet;
+    class DevPriv,ProdPriv privSubnet;
+    class D_EIP,D_NLB,D_ALB,D_EC2,P_EIP,P_NLB,P_ALB,P_EC2 resource;
+    class D_S3,P_S3 s3;
 ```
 
 ---
