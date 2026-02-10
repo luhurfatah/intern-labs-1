@@ -16,11 +16,19 @@
 
 ```mermaid
 graph LR
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+
     Code[Write .tf Code] --> Init[terraform init]
     Init --> Plan[terraform plan]
     Plan --> Apply[terraform apply]
     Apply --> State[(terraform.tfstate)]
     State -- "Compare" --> Plan
+
+    %% Assign Classes
+    class Code,Init,Plan,Apply resource;
+    class State state;
 ```
 
 ---

@@ -17,18 +17,25 @@
 
 ```mermaid
 graph TD
-    VPC[VPC: 10.0.0.0/16]
-    IGW[Internet Gateway]
-    NAT[NAT Gateway]
-    
-    subgraph "Public Subnet (10.0.1.0/24)"
-        RT_Pub[Public Route Table]
-        NAT
-    end
-    
-    subgraph "Private Subnet (10.0.2.0/24)"
-        RT_Priv[Private Route Table]
-        EC2_Priv[Private Instance]
+    %% Styling (Theme-Neutral)
+    classDef vpc fill:none,stroke:#777,stroke-width:2px;
+    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+
+    subgraph VPC ["VPC: 10.0.0.0/16"]
+        IGW[Internet Gateway]
+        NAT[NAT Gateway]
+        
+        subgraph PubSub ["Public Subnet (10.0.1.0/24)"]
+            RT_Pub[Public Route Table]
+            NAT
+        end
+        
+        subgraph PrivSub ["Private Subnet (10.0.2.0/24)"]
+            RT_Priv[Private Route Table]
+            EC2_Priv[Private Instance]
+        end
     end
     
     VPC --- IGW
@@ -36,6 +43,12 @@ graph TD
     RT_Priv --> NAT
     NAT --> IGW
     EC2_Priv --> RT_Priv
+
+    %% Assign Classes
+    class VPC vpc;
+    class PubSub pubSubnet;
+    class PrivSub privSubnet;
+    class IGW,NAT,RT_Pub,RT_Priv,EC2_Priv resource;
 ```
 
 ---

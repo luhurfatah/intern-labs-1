@@ -16,12 +16,20 @@
 
 ```mermaid
 graph TD
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+
     Console[Manual Resource in Console] --> Config[Write root.hcl]
     Config --> Import[terragrunt import]
     Import --> Init[Auto-Init Backend]
     Init --> State[Update Remote State]
     State --> Plan[terragrunt plan]
     Plan -- "No Changes" --> Success[Codified!]
+
+    %% Assign Classes
+    class Console,Config,Import,Init,Success resource;
+    class State state;
 ```
 
 ---

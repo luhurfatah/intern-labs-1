@@ -16,7 +16,11 @@
 
 ```mermaid
 graph TD
-    subgraph "Root Module"
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef module fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+
+    subgraph Root ["Root Module"]
         Main[main.tf]
         Vars[variables.tf]
     end
@@ -24,13 +28,17 @@ graph TD
     Main -- "Calls" --> VPC_Mod[Module: Networking]
     Main -- "Calls" --> EC2_Mod[Module: Compute]
     
-    subgraph "Networking Module"
+    subgraph NetMod ["Networking Module"]
         VPC_Code[VPC & Subnets]
     end
     
-    subgraph "Compute Module"
+    subgraph CompMod ["Compute Module"]
         EC2_Code[EC2 & SG]
     end
+
+    %% Assign Classes
+    class Root,NetMod,CompMod module;
+    class Main,Vars,VPC_Mod,EC2_Mod,VPC_Code,EC2_Code resource;
 ```
 
 ---

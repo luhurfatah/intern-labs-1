@@ -15,11 +15,19 @@
 
 ```mermaid
 graph TD
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+
     Script[Python Script] --> Session[boto3.Session]
     Session --> Resource[Resource API: High-Level]
     Session --> Client[Client API: Low-Level]
     Resource --> S3_Res[S3 Bucket Resource]
     Client --> S3_Cli[S3 API Calls]
+
+    %% Assign Classes
+    class Script,Session,Resource,Client resource;
+    class S3_Res,S3_Cli s3;
 ```
 
 ---

@@ -16,18 +16,28 @@
 
 ```mermaid
 graph LR
-    subgraph "Standard Terraform"
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+    classDef tg fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+
+    subgraph Std ["Standard Terraform"]
         TF_Code[Module Code]
         TF_State[Manual Backend Config]
         TF_Prov[Manual Provider Config]
     end
     
-    subgraph "With Terragrunt"
+    subgraph WithTG ["With Terragrunt"]
         TG_Code[Module Code]
         TG_HCL[root.hcl]
         TG_HCL -- "Injects" --> TG_State[Auto Backend]
         TG_HCL -- "Injects" --> TG_Prov[Auto Provider]
     end
+
+    %% Assign Classes
+    class Std,WithTG tg;
+    class TF_Code,TF_Prov,TG_Code,TG_HCL,TG_Prov resource;
+    class TF_State,TG_State state;
 ```
 
 ---

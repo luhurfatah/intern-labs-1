@@ -8,12 +8,12 @@ The project requires two distinct environments (Dev and Prod) within the same AW
 
 ```mermaid
 graph TD
-    %% Styling (High Compatibility - Light/Dark Friendly)
-    classDef vpc fill:#f9f9f9,stroke:#777,stroke-width:2px;
-    classDef pubSubnet fill:#e7f3ff,stroke:#0073bb,stroke-width:1px,stroke-dasharray: 5 5;
-    classDef privSubnet fill:#f2f2f2,stroke:#545b64,stroke-width:1px,stroke-dasharray: 5 5;
-    classDef resource fill:#ffffff,stroke:#333,stroke-width:1px;
-    classDef s3 fill:#fff7e6,stroke:#ff9900,stroke-width:2px;
+    %% Styling (Theme-Neutral - Dark Mode Friendly)
+    classDef vpc fill:none,stroke:#777,stroke-width:2px;
+    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
     classDef env fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
 
     subgraph "AWS Account"

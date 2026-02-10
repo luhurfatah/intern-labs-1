@@ -16,11 +16,18 @@
 
 ```mermaid
 graph TD
-    subgraph "VPC: 10.0.0.0/16"
-        subgraph "Public Subnet"
+    %% Styling (Theme-Neutral)
+    classDef vpc fill:none,stroke:#777,stroke-width:2px;
+    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+
+    subgraph VPC ["VPC: 10.0.0.0/16"]
+        subgraph PubSub ["Public Subnet"]
             NAT[NAT Gateway]
         end
-        subgraph "Private Subnet"
+        subgraph PrivSub ["Private Subnet"]
             EC2[Private EC2 Instance]
             VPCE_S3[VPC Endpoint: S3]
         end
@@ -34,6 +41,13 @@ graph TD
     
     EC2 -- "General Outbound" --> NAT
     NAT -- "Egress ONLY" --> Repos
+
+    %% Assign Classes
+    class VPC vpc;
+    class PubSub pubSubnet;
+    class PrivSub privSubnet;
+    class NAT,EC2,VPCE_S3 resource;
+    class S3 s3;
 ```
 
 ---

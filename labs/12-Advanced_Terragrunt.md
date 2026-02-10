@@ -16,18 +16,23 @@
 
 ```mermaid
 graph TD
-    subgraph "Networking Layer"
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef layer fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+
+    subgraph NetLayer ["Networking Layer"]
         VPC[VPC Module]
         RT[Route Tables]
         NACL[NACL Rules]
     end
     
-    subgraph "Compute Layer"
+    subgraph CompLayer ["Compute Layer"]
         ALB[ALB Module]
         EC2[EC2 Module]
     end
     
-    subgraph "Storage Layer"
+    subgraph StorLayer ["Storage Layer"]
         S3[S3 Bucket]
     end
 
@@ -36,6 +41,11 @@ graph TD
     EC2 -- "Depends on" --> S3
     VPC -- "Contains" --> RT
     VPC -- "Contains" --> NACL
+
+    %% Assign Classes
+    class NetLayer,CompLayer,StorLayer layer;
+    class VPC,RT,NACL,ALB,EC2 resource;
+    class S3 s3;
 ```
 
 ---

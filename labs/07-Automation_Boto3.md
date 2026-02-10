@@ -15,10 +15,16 @@
 
 ```mermaid
 graph LR
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+
     Script[Automation Script] --> Discovery[Find Instances by Tag]
     Discovery --> Stop[Stop Unused Instances]
     Discovery --> Report[Generate CSV Report]
     Script --> SG[Update SG Rules]
+
+    %% Assign Classes
+    class Script,Discovery,Stop,Report,SG resource;
 ```
 
 ---

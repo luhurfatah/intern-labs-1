@@ -16,17 +16,28 @@
 
 ```mermaid
 graph TD
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef az fill:none,stroke:#777,stroke-width:2px,stroke-dasharray: 5 5;
+
     Internet[Internet] --> ALB[Application Load Balancer]
-    subgraph "Availability Zone A"
+    
+    subgraph AZ_A ["Availability Zone A"]
         EC2_A[EC2 Instance A]
     end
-    subgraph "Availability Zone B"
+    
+    subgraph AZ_B ["Availability Zone B"]
         EC2_B[EC2 Instance B]
     end
+    
     ALB --> EC2_A
     ALB --> EC2_B
     ASG[Auto Scaling Group] -. "Monitors & Heals" .-> EC2_A
     ASG -. "Monitors & Heals" .-> EC2_B
+
+    %% Assign Classes
+    class AZ_A,AZ_B az;
+    class Internet,ALB,EC2_A,EC2_B,ASG resource;
 ```
 
 ---

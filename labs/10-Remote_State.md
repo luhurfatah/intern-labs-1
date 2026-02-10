@@ -17,11 +17,16 @@
 
 ```mermaid
 graph TD
-    subgraph "Local Workspace"
+    %% Styling (Theme-Neutral)
+    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+    classDef db fill:none,stroke:#7b42bc,stroke-width:2px;
+
+    subgraph Workspace ["Local Workspace"]
         TF[Terraform Code]
     end
     
-    subgraph "AWS Infrastructure"
+    subgraph AWS ["AWS Infrastructure"]
         S3[(S3: Remote State)]
         DB[(DynamoDB: State Lock)]
         Res[AWS Resources]
@@ -30,6 +35,11 @@ graph TD
     TF -- "Initializes/Apps" --> S3
     TF -- "Put/Get Lock" --> DB
     TF -- "Deploys" --> Res
+
+    %% Assign Classes
+    class TF,Res resource;
+    class S3 state;
+    class DB db;
 ```
 
 ---
