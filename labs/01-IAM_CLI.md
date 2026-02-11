@@ -55,7 +55,21 @@ IAM is the "security guard" of AWS. It follows the **Principle of Least Privileg
 
 ## 🛠️ Step-by-Step Lab
 
-### Step 1: Verify your Identity
+### Step 1: Configure the AWS CLI
+Before running commands, you must configure your credentials.
+
+1.  Open the terminal.
+2.  Run:
+    ```bash
+    aws configure
+    ```
+3.  **Inputs**:
+    - **AWS Access Key ID**: (As provided in your sandbox environment)
+    - **AWS Secret Access Key**: (As provided in your sandbox environment)
+    - **Default region name**: `us-east-1`
+    - **Default output format**: `json`
+
+### Step 2: Verify your Identity
 In a professional environment, you should always know *who* you are acting as.
 
 1.  Open the terminal.
@@ -67,7 +81,7 @@ In a professional environment, you should always know *who* you are acting as.
     - If it shows `arn:aws:iam::...:user/cli-user`, you are using the dedicated **CLI User**.
     - If it shows `arn:aws:sts::...:assumed-role/cloud_user/...`, you are using a temporary **Role**.
 
-### Step 2: Explore Regional Differences
+### Step 3: Explore Regional Differences
 AWS CLI commands are regional unless specified otherwise.
 
 1.  List regions to see what's available:
@@ -76,7 +90,7 @@ AWS CLI commands are regional unless specified otherwise.
     ```
 2.  **Observation**: Note the `RegionName` and `Endpoint`. Most of our work will be in `us-east-1`.
 
-### Step 3: Create a Unique S3 Bucket
+### Step 4: Create a Unique S3 Bucket
 S3 is a global namespace. Bucket names must be unique across the entire world!
 
 1.  Run the following command (replace `[yourname]` with your name):
@@ -85,7 +99,7 @@ S3 is a global namespace. Bucket names must be unique across the entire world!
     ```
 2.  **Pro-Tip**: Use a prefix like `intern-` and include the date or your name to avoid "Bucket Already Exists" errors.
 
-### Step 4: Upload and Manage Files
+### Step 5: Upload and Manage Files
 1.  Create a local file:
     ```bash
     echo "This is my first cloud file!" > test.txt
