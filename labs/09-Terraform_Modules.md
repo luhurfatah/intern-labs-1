@@ -16,9 +16,10 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef module fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+    %% Styling (AWS Standards)
+    classDef terraform fill:none,stroke:#c85581,stroke-width:2px;
+    classDef module fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 10 5;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     subgraph Root ["Root Module"]
         Main[main.tf]
@@ -38,7 +39,7 @@ graph TD
 
     %% Assign Classes
     class Root,NetMod,CompMod module;
-    class Main,Vars,VPC_Mod,EC2_Mod,VPC_Code,EC2_Code resource;
+    class Main,Vars,VPC_Mod,EC2_Mod,VPC_Code,EC2_Code terraform;
 ```
 
 ---

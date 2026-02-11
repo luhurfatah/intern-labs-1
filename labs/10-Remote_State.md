@@ -17,10 +17,12 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
-    classDef db fill:none,stroke:#7b42bc,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef terraform fill:none,stroke:#c85581,stroke-width:2px;
+    classDef state fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef db fill:none,stroke:#dd344c,stroke-width:2px;
+    classDef container fill:none,stroke:#545b64,stroke-width:1px,stroke-dasharray: 5 5;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     subgraph Workspace ["Local Workspace"]
         TF[Terraform Code]
@@ -37,9 +39,11 @@ graph TD
     TF -- "Deploys" --> Res
 
     %% Assign Classes
-    class TF,Res resource;
+    class TF terraform;
     class S3 state;
     class DB db;
+    class Res external;
+    class Workspace,AWS container;
 ```
 
 ---

@@ -16,9 +16,10 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef terraform fill:none,stroke:#c85581,stroke-width:2px;
+    classDef state fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     Console[Manual Resource in Console] --> Config[Write root.hcl]
     Config --> Import[terragrunt import]
@@ -28,8 +29,9 @@ graph TD
     Plan -- "No Changes" --> Success[Codified!]
 
     %% Assign Classes
-    class Console,Config,Import,Init,Success resource;
+    class Import,Init,Plan terraform;
     class State state;
+    class Console,Config,Success external;
 ```
 
 ---

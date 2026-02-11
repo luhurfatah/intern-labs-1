@@ -16,9 +16,10 @@
 
 ```mermaid
 graph LR
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef terraform fill:none,stroke:#c85581,stroke-width:2px;
+    classDef state fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     Code[Write .tf Code] --> Init[terraform init]
     Init --> Plan[terraform plan]
@@ -27,7 +28,7 @@ graph LR
     State -- "Compare" --> Plan
 
     %% Assign Classes
-    class Code,Init,Plan,Apply resource;
+    class Code,Init,Plan,Apply terraform;
     class State state;
 ```
 

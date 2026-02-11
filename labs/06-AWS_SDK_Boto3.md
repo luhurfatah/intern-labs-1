@@ -15,9 +15,10 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef s3 fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef automation fill:none,stroke:#c85581,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     Script[Python Script] --> Session[boto3.Session]
     Session --> Resource[Resource API: High-Level]
@@ -26,8 +27,9 @@ graph TD
     Client --> S3_Cli[S3 API Calls]
 
     %% Assign Classes
-    class Script,Session,Resource,Client resource;
+    class Script,Session automation;
     class S3_Res,S3_Cli s3;
+    class Resource,Client external;
 ```
 
 ---

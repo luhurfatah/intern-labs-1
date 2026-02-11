@@ -16,20 +16,20 @@
 
 ```mermaid
 graph LR
-    %% Styling (Theme-Neutral)
-    classDef iam fill:none,stroke:#7b42bc,stroke-width:2px;
-    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    %% Styling (AWS Standards)
+    classDef iam fill:none,stroke:#dd344c,stroke-width:2px;
+    classDef s3 fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
-    User[Cloud Intern] -- "AWS CLI" --> IAM{IAM}
+    User["Cloud Intern"] -- "AWS CLI" --> IAM{IAM}
     IAM -- "Allow" --> S3[S3 Service]
-    IAM -- "Deny" --> EC2[EC2 Service]
-    S3 -- "Storage" --> Bucket[s3://intern-name-day1]
+    IAM -- "Limited" --> Global["Global Infrastructure"]
+    S3 -- "Storage" --> Bucket["s3://intern-[yourname]-day1"]
 
     %% Assign Classes
     class IAM iam;
     class S3,Bucket s3;
-    class User,EC2 resource;
+    class User,Global external;
 ```
 
 ---

@@ -16,10 +16,11 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef layer fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
-    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef compute fill:none,stroke:#ff9900,stroke-width:2px;
+    classDef layer fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 10 5;
+    classDef s3 fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef network fill:none,stroke:#8c4fff,stroke-width:2px;
 
     subgraph NetLayer ["Networking Layer"]
         VPC[VPC Module]
@@ -44,7 +45,8 @@ graph TD
 
     %% Assign Classes
     class NetLayer,CompLayer,StorLayer layer;
-    class VPC,RT,NACL,ALB,EC2 resource;
+    class VPC,RT,NACL network;
+    class ALB,EC2 compute;
     class S3 s3;
 ```
 

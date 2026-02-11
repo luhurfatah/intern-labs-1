@@ -16,12 +16,12 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef vpc fill:none,stroke:#777,stroke-width:2px;
-    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
+    %% Styling (AWS Standards)
+    classDef vpc fill:none,stroke:#8c4fff,stroke-width:2px;
+    classDef subnet fill:none,stroke:#8c4fff,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef compute fill:none,stroke:#ff9900,stroke-width:1px;
+    classDef s3 fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     subgraph VPC ["VPC: 10.0.0.0/16"]
         subgraph PubSub ["Public Subnet"]
@@ -44,10 +44,10 @@ graph TD
 
     %% Assign Classes
     class VPC vpc;
-    class PubSub pubSubnet;
-    class PrivSub privSubnet;
-    class NAT,EC2,VPCE_S3 resource;
+    class PubSub,PrivSub subnet;
+    class EC2 compute;
     class S3 s3;
+    class NAT,VPCE_S3,Repos external;
 ```
 
 ---

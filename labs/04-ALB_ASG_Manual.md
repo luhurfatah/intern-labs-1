@@ -16,9 +16,10 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef az fill:none,stroke:#777,stroke-width:2px,stroke-dasharray: 5 5;
+    %% Styling (AWS Standards)
+    classDef compute fill:none,stroke:#ff9900,stroke-width:2px;
+    classDef az fill:none,stroke:#8c4fff,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     Internet[Internet] --> ALB[Application Load Balancer]
     
@@ -37,7 +38,8 @@ graph TD
 
     %% Assign Classes
     class AZ_A,AZ_B az;
-    class Internet,ALB,EC2_A,EC2_B,ASG resource;
+    class EC2_A,EC2_B compute;
+    class Internet,ALB,ASG external;
 ```
 
 ---

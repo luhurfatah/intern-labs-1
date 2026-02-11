@@ -17,19 +17,18 @@
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral)
-    classDef vpc fill:none,stroke:#777,stroke-width:2px;
-    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    %% Styling (AWS Standards)
+    classDef vpc fill:none,stroke:#8c4fff,stroke-width:2px;
+    classDef subnet fill:none,stroke:#8c4fff,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef compute fill:none,stroke:#ff9900,stroke-width:1px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     subgraph VPC ["VPC: 10.0.0.0/16"]
         IGW[Internet Gateway]
-        NAT[NAT Gateway]
         
         subgraph PubSub ["Public Subnet (10.0.1.0/24)"]
             RT_Pub[Public Route Table]
-            NAT
+            NAT[NAT Gateway]
         end
         
         subgraph PrivSub ["Private Subnet (10.0.2.0/24)"]
@@ -46,9 +45,9 @@ graph TD
 
     %% Assign Classes
     class VPC vpc;
-    class PubSub pubSubnet;
-    class PrivSub privSubnet;
-    class IGW,NAT,RT_Pub,RT_Priv,EC2_Priv resource;
+    class PubSub,PrivSub subnet;
+    class EC2_Priv compute;
+    class IGW,NAT,RT_Pub,RT_Priv external;
 ```
 
 ---

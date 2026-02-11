@@ -16,10 +16,10 @@
 
 ```mermaid
 graph LR
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef state fill:none,stroke:#0073bb,stroke-width:2px;
-    classDef tg fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+    %% Styling (AWS Standards)
+    classDef terraform fill:none,stroke:#c85581,stroke-width:2px;
+    classDef state fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef tg fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 10 5;
 
     subgraph Std ["Standard Terraform"]
         TF_Code[Module Code]
@@ -36,7 +36,7 @@ graph LR
 
     %% Assign Classes
     class Std,WithTG tg;
-    class TF_Code,TF_Prov,TG_Code,TG_HCL,TG_Prov resource;
+    class TF_Code,TF_Prov,TG_Code,TG_HCL,TG_Prov terraform;
     class TF_State,TG_State state;
 ```
 

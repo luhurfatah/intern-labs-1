@@ -15,8 +15,10 @@
 
 ```mermaid
 graph LR
-    %% Styling (Theme-Neutral)
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
+    %% Styling (AWS Standards)
+    classDef compute fill:none,stroke:#ff9900,stroke-width:1px;
+    classDef automation fill:none,stroke:#c85581,stroke-width:2px;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
     Script[Automation Script] --> Discovery[Find Instances by Tag]
     Discovery --> Stop[Stop Unused Instances]
@@ -24,7 +26,9 @@ graph LR
     Script --> SG[Update SG Rules]
 
     %% Assign Classes
-    class Script,Discovery,Stop,Report,SG resource;
+    class Script automation;
+    class Discovery,Report,SG external;
+    class Stop compute;
 ```
 
 ---

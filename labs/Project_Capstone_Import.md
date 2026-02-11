@@ -8,15 +8,15 @@ The project requires two distinct environments (Dev and Prod) within the same AW
 
 ```mermaid
 graph TD
-    %% Styling (Theme-Neutral - Dark Mode Friendly)
-    classDef vpc fill:none,stroke:#777,stroke-width:2px;
-    classDef pubSubnet fill:none,stroke:#0073bb,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef privSubnet fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 5 5;
-    classDef resource fill:none,stroke:#888,stroke-width:1px;
-    classDef s3 fill:none,stroke:#ff9900,stroke-width:2px;
-    classDef env fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 10 5;
+    %% Styling (AWS Standards)
+    classDef vpc fill:none,stroke:#8c4fff,stroke-width:2px;
+    classDef subnet fill:none,stroke:#8c4fff,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef compute fill:none,stroke:#ff9900,stroke-width:1px;
+    classDef s3 fill:none,stroke:#3b48cc,stroke-width:2px;
+    classDef env fill:none,stroke:#545b64,stroke-width:2px,stroke-dasharray: 10 5;
+    classDef external fill:none,stroke:#545b64,stroke-width:1px;
 
-    subgraph "AWS Account"
+    subgraph AWS_Acc ["AWS Account"]
         direction TB
 
         subgraph DevEnv ["DEV ENVIRONMENT"]
@@ -54,10 +54,11 @@ graph TD
     %% Assign Classes
     class DevEnv,ProdEnv env;
     class DevVPC,ProdVPC vpc;
-    class DevPub,ProdPub pubSubnet;
-    class DevPriv,ProdPriv privSubnet;
-    class D_EIP,D_NLB,D_ALB,D_EC2,P_EIP,P_NLB,P_ALB,P_EC2 resource;
+    class DevPub,DevPriv,ProdPub,ProdPriv subnet;
+    class D_EC2,P_EC2 compute;
     class D_S3,P_S3 s3;
+    class D_EIP,D_NLB,D_ALB,P_EIP,P_NLB,P_ALB external;
+    class AWS_Acc env;
 ```
 
 ---
